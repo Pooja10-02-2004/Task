@@ -1,0 +1,33 @@
+class Quiz:
+    def __init__(self):
+        self.questions = []
+        self.score = 0
+
+    def add_question(self, question, correct_answer):
+        self.questions.append((question, correct_answer))
+
+    def run_quiz(self):
+        for question, correct_answer in self.questions:
+            user_answer = input(f"Question: {question}\nYour Answer: ").strip()
+            if user_answer.lower() == correct_answer.lower():
+                print("Correct!\n")
+                self.score += 1
+            else:
+                print(f"Wrong! The correct answer is: {correct_answer}\n")
+        self.display_score()
+
+    def display_score(self):
+        print(f"You got {self.score} out of {len(self.questions)} questions correct.")
+
+def main():
+    quiz = Quiz()
+
+    quiz.add_question("What is the capital of France?", "Paris")
+    quiz.add_question("What is 2 + 2?", "4")
+    quiz.add_question("Which planet is known as the Red Planet?", "Mars")
+
+    print("Welcome to the Quiz Game!")
+    quiz.run_quiz()
+
+if __name__ == "__main__":
+    main()
